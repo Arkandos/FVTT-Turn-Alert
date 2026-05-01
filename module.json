@@ -46,8 +46,8 @@
     "verified": "12"
   },
   "url": "https://github.com/Arkandos/FVTT-Turn-Alert",
-  "manifest": "https://raw.githubusercontent.com/Arkandos/FVTT-Turn-Alert/refs/heads/master/module.json",
-  "download": "http://github.com/Arkandos/FVTT-Turn-Alert/archive/v3.0.1.zip",
+  "manifest": "https://github.com/Arkandos/FVTT-Turn-Alert/releases/download/v3.0.1/module.json",
+  "download": "https://github.com/Arkandos/FVTT-Turn-Alert/releases/download/v3.0.1/module.zip",
   "license": "https://github.com/Arkandos/FVTT-Turn-Alert/blob/master/LICENSE",
   "readme": "https://github.com/Arkandos/FVTT-Turn-Alert/blob/master/README.md",
   "changelog": "https://github.com/Arkandos/FVTT-Turn-Alert/blob/master/CHANGELOG.md",
