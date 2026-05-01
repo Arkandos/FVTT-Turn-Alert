@@ -1,13 +1,16 @@
+# Fork Disclaimer
+
+This is to me an essential module for FoundryVTT, and that it has been forgotten has been very disappointing. The original repository by @schultzcole is long since archived, and I've been using [Syberics fork](https://github.com/Syberic/FVTT-Turn-Alert/) with my own small fixes to make it work up to and including Foundry v12. But now with AppV2 for Foundry v13, it is not longer accessible from the ingame interface even if it still works mechanically. Preferably, the module deserves a full rewrite from scratch to take advantage of all the advances made since it was made, but that is not feasible for me at the moment.
+
+I am grateful for all those who have worked on the module through the years, and the foundry discord for helping me keep it alive like a frankensteins monster.
+
+# Original Readme
 # Turn Alert
 
 Set alerts to trigger on a particular round of combat or on a particular token's turn.
 Alerts can create a chat message or execute a macro, for endless possibilities.
 
 Easily create new alerts [through the UI](https://github.com/schultzcole/FVTT-Turn-Alert/wiki/User-Guide), or create alerts [programmatically](https://github.com/schultzcole/FVTT-Turn-Alert/wiki/Turn-Alert-API) with macros for more advanced options.
-
-## Fork Disclaimer
-
-This is one of my favorite module for FoundryVTT and was disappointed after upgrading to Foundry 0.8.9 and this module's 2.0.0 that it didn't work well, so I made the quickest fix possible. I understand the original repository is now archived and don't expect an update, but just in case, and for those like me that relied on turn alerts to track stuff happening in their combats, here's the fix. If anyone wants to use it ASAP without waiting for an hypothetical merge in the original repository, the manifest from my fork can be used: `https://raw.githubusercontent.com/johnmartel/FVTT-Turn-Alert/master/module.json`. I don't mean to publish it to the Foundry marketplace, it's just a handy workaround for the current issue. I am grateful to @schultzcole for putting on the awesome work creating this module and I hope this fix can be useful to others.
 
 ## Use Cases
 
@@ -44,4 +47,4 @@ This module doesn't coordinate with about time, dynamic effects, minor QOL, etc.
 
 ## License
 
-Licensed under the GPLv3 License (see [LICENSE](LICENSE)).
+Licensed under the MIT License (see [LICENSE](LICENSE)).

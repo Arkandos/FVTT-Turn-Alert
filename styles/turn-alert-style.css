@@ -171,3 +171,7 @@
     padding: 2px 6px 2px 10px;
     border-radius: 5px;
 }
+
+.encounter-controls .combat-control {
+	flex: 0;
+}

@@ -1,4 +1,7 @@
-import { patch_CombatTracker_getEntryContextOptions, patch_CombatTracker_activateListeners } from "./scripts/patches.js";
+import {
+    patch_CombatTracker_getEntryContextOptions,
+    patch_CombatTracker_activateListeners,
+} from "./scripts/patches.js";
 import { handlePreUpdateCombat, handleUpdateCombat } from "./scripts/handleUpdateCombat.js";
 import CONST from "./scripts/const.js";
 import CombatAlertsApplication from "./apps/CombatAlertsApplication.js";
@@ -42,10 +45,10 @@ Hooks.on("preUpdateCombat", handlePreUpdateCombat);
 Hooks.on("updateCombat", handleUpdateCombat);
 
 Hooks.on("renderCombatTracker", (tracker, html, data) => {
-    if (!data.combat?.round) return;
+    if (!data.combat?.data?.round) return;
 
     const alertButton = $(document.createElement("a"));
-    alertButton.addClass(["combat-button", "combat-control", "combat-alerts"]);
+    alertButton.addClass(["combat-control", "combat-alerts"]);
     alertButton.attr("title", game.i18n.localize(`${CONST.moduleName}.APP.CombatAlertsTitle`));
     alertButton.html('<i class="fas fa-bell"></i>');
     alertButton.click((event) => {
@@ -54,5 +57,5 @@ Hooks.on("renderCombatTracker", (tracker, html, data) => {
         app.render(true);
     });
 
-    html.find(".combat-tracker-header .encounter-controls .encounter-title").after(alertButton);
+    html.find("a.combat-button.combat-settings").before(alertButton);
 });
