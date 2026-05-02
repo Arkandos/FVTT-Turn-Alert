@@ -1,8 +1,11 @@
 # Fork Disclaimer
 
-This is to me an essential module for FoundryVTT, and that it has been forgotten has been very disappointing. The original repository by @schultzcole is long since archived, and I've been using [Syberics fork](https://github.com/Syberic/FVTT-Turn-Alert/) with my own small fixes to make it work up to and including Foundry v12. But now with AppV2 for Foundry v13, it is not longer accessible from the ingame interface even if it still works mechanically. Preferably, the module deserves a full rewrite from scratch to take advantage of all the advances made since it was made, but that is not feasible for me at the moment.
+This is to me an essential module for FoundryVTT, and that it has been forgotten has been very disappointing. The original repository by @schultzcole is long since archived, and I've previously been using [Syberics fork](https://github.com/Syberic/FVTT-Turn-Alert/) with my own small fixes to make it work up to and including Foundry v13. Preferably, the module deserves a full rewrite from scratch to take advantage of all the advances made since it was made, but that is not feasible for me at the moment. At least now it all functions as intended in AppV2.
 
 I am grateful for all those who have worked on the module through the years, and the foundry discord for helping me keep it alive like a frankensteins monster.
+
+# Install
+Manifest URL: https://github.com/Arkandos/FVTT-Turn-Alert/releases/latest/download/module.json
 
 # Original Readme
 # Turn Alert
