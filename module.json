@@ -1,7 +1,7 @@
 {
   "title": "Turn Alert",
   "description": "Set alerts to trigger on a particular round of combat or on a particular token's turn.",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "languages": [
     {
       "lang": "en",
@@ -43,11 +43,11 @@
   "socket": true,
   "compatibility": {
 	"minimum": "12",
-    "verified": "12"
+    "verified": "13"
   },
   "url": "https://github.com/Arkandos/FVTT-Turn-Alert",
-  "manifest": "https://github.com/Arkandos/FVTT-Turn-Alert/releases/download/v3.0.1/module.json",
-  "download": "https://github.com/Arkandos/FVTT-Turn-Alert/releases/download/v3.0.1/module.zip",
+  "manifest": "https://github.com/Arkandos/FVTT-Turn-Alert/releases/latest/download/module.json",
+  "download": "https://github.com/Arkandos/FVTT-Turn-Alert/releases/download/v3.1.0/module.zip",
   "license": "https://github.com/Arkandos/FVTT-Turn-Alert/blob/master/LICENSE",
   "readme": "https://github.com/Arkandos/FVTT-Turn-Alert/blob/master/README.md",
   "changelog": "https://github.com/Arkandos/FVTT-Turn-Alert/blob/master/CHANGELOG.md",

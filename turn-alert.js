@@ -1,7 +1,3 @@
-import {
-    patch_CombatTracker_getEntryContextOptions,
-    patch_CombatTracker_activateListeners,
-} from "./scripts/patches.js";
 import { handlePreUpdateCombat, handleUpdateCombat } from "./scripts/handleUpdateCombat.js";
 import CONST from "./scripts/const.js";
 import CombatAlertsApplication from "./apps/CombatAlertsApplication.js";
@@ -45,17 +41,31 @@ Hooks.on("preUpdateCombat", handlePreUpdateCombat);
 Hooks.on("updateCombat", handleUpdateCombat);
 
 Hooks.on("renderCombatTracker", (tracker, html, data) => {
-    if (!data.combat?.data?.round) return;
+    if (!data.combat?.round) return;
 
-    const alertButton = $(document.createElement("a"));
-    alertButton.addClass(["combat-control", "combat-alerts"]);
-    alertButton.attr("title", game.i18n.localize(`${CONST.moduleName}.APP.CombatAlertsTitle`));
-    alertButton.html('<i class="fas fa-bell"></i>');
-    alertButton.click((event) => {
+    const alertButton = document.createElement("a");
+    alertButton.classList.add("combat-control", "combat-alerts");
+    alertButton.setAttribute("title", game.i18n.localize(`${CONST.moduleName}.APP.CombatAlertsTitle`));
+    alertButton.innerHTML = '<i class="fas fa-bell"></i>';
+    alertButton.addEventListener('click', (event) => {
         const combatId = data.combat.id;
         const app = new CombatAlertsApplication({ combatId });
         app.render(true);
     });
 
-    html.find("a.combat-button.combat-settings").before(alertButton);
+    html.querySelector("button.encounter-context-menu").before(alertButton);
+});
+
+Hooks.on("getCombatTrackerContextOptions", (combatTracker, menuItems) => {
+    menuItems.push({
+        name: game.i18n.localize(`${CONST.moduleName}.APP.AddAlert`),
+        icon: '<i class="fas fa-bell"></i>',
+        callback: (li) => {
+                const alertData = {
+                    round: 1,
+                    turnId: li.dataset.combatantId,
+                };
+                new TurnAlertConfig(alertData, {}).render(true);
+        }
+    });
 });
