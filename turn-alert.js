@@ -8,9 +8,6 @@ Hooks.on("init", () => {
     globalThis.TurnAlert = TurnAlert;
     globalThis.TurnAlertConfig = TurnAlertConfig;
 
-    patch_CombatTracker_activateListeners();
-    patch_CombatTracker_getEntryContextOptions();
-
     game.socket.on(`module.${CONST.moduleName}`, async (payload) => {
         const firstGm = game.users.find((u) => u.isGM && u.active);
         switch (payload.type) {
