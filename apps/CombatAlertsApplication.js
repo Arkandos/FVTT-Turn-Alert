@@ -162,7 +162,7 @@ export default class CombatAlertsApplication extends Application {
         // Listen for alert edit buttons to be clicked.
         html.find(".edit-alert-button").click((event) => {
             const alertId = event.currentTarget.dataset.id;
-            const alertData = getProperty(this._combat, `flags.${CONST.moduleName}.alerts.${alertId}`);
+            const alertData = foundry.utils.getProperty(this._combat, `flags.${CONST.moduleName}.alerts.${alertId}`);
             if (!alertData) {
                 throw new Error(
                     `Trying to edit a non-existent turn alert! ID "${alertId}" does not exist on combat "${this.combatId}"`

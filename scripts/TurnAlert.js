@@ -282,7 +282,7 @@ export default class TurnAlert {
         }
 
         if (canUserModifyCombat()) {
-            const id = randomID(16);
+            const id = foundry.utils.randomID(16);
             alertData.id = id;
 
             let combatAlerts = combat.getFlag(CONST.moduleName, "alerts");
@@ -320,7 +320,7 @@ export default class TurnAlert {
         }
 
         const alerts = combat.getFlag(CONST.moduleName, "alerts");
-        const existingData = getProperty(alerts, data.id);
+        const existingData = foundry.utils.getProperty(alerts, data.id);
 
         if (!existingData) {
             throw new Error(
