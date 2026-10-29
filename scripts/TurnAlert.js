@@ -19,7 +19,7 @@ import { compareTurns } from "./utils.js";
  *     label: string                         // A short human-readable string that is displayed in the Combat Alerts window.
  *     message: string,                      // The message to be displayed in chat when the alert is activated
  *     recipientIds: [user id strings]       // The users to whom the message should be whispered. If empty, the message is public
- *     macro: string                         // The macro id or name to trigger when this alert is triggered
+ *     macro: string                         // The macro UUID or name to trigger when this alert is triggered
  *     args: [Object]                        // An array of arguments that will be available to the macro when it is executed
  *     userId: id string,                    // The user that created this alert
  * }
@@ -151,7 +151,7 @@ export default class TurnAlert {
         }
 
         if (alert.macro) {
-            const macro = game.macros.get(alert.macro) || game.macros.getName(alert.macro);
+            const macro = game.macros.getName(alert.macro) || await fromUuid(alert.macro);
             if (macro) {
                 this._customExecute(alert, macro);
             } else {
@@ -160,7 +160,7 @@ export default class TurnAlert {
         }
     }
 
-    static _customExecute(alert, macro) {
+    static async _customExecute(alert, macro) {
         // Chat macros
         if (macro.type === "chat") {
             ui.chat.processMessage(macro.command).catch((err) => {
@@ -171,6 +171,9 @@ export default class TurnAlert {
 
         // Script macros
         else if (macro.type === "script") {
+            await macro.execute({args: alert.args});
+            /** 
+
             if (!game.user.can("MACRO_SCRIPT")) {
                 return ui.notifications.warn(`You are not allowed to use JavaScript macros.`);
             }
@@ -187,6 +190,7 @@ export default class TurnAlert {
                 console.error(`Encountered an error while evaluating the macro for alert "${alert.id}:"`);
                 console.error(err);
             }
+            */
         }
     }
 
@@ -259,7 +263,7 @@ export default class TurnAlert {
      * @param {string} data.label                       A short human-readable string to identify the alert. Displayed in the Combat Alerts window
      * @param {string} data.message                     The message to be displayed in chat when the alert is activated
      * @param {Array(id string)} data.recipientIds      The users to whom the message should be whispered. If empty, the message is public
-     * @param {string} data.macro                       The macro id or name to trigger when this alert is triggered
+     * @param {string} data.macro                       The macro UUID or name to trigger when this alert is triggered
      * @param {Array} data.args                         An array of arguments that will be available and in scope when the macro executes
      * @param {id string} data.userId                   The user that created this alert
      */
@@ -282,7 +286,7 @@ export default class TurnAlert {
         }
 
         if (canUserModifyCombat()) {
-            const id = randomID(16);
+            const id = foundry.utils.randomID(16);
             alertData.id = id;
 
             let combatAlerts = combat.getFlag(CONST.moduleName, "alerts");
@@ -320,7 +324,7 @@ export default class TurnAlert {
         }
 
         const alerts = combat.getFlag(CONST.moduleName, "alerts");
-        const existingData = getProperty(alerts, data.id);
+        const existingData = foundry.utils.getProperty(alerts, data.id);
 
         if (!existingData) {
             throw new Error(

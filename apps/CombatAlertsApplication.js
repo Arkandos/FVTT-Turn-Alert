@@ -95,7 +95,7 @@ export default class CombatAlertsApplication extends Application {
             : `${CONST.moduleName}.APP.TriggerAtStartOfTurnNum`;
         const roundIcon = alert.endOfTurn ? "hourglass-end" : "hourglass-start";
 
-        const macroName = (game.macros.get(alert.macro) || game.macros.getName(alert.macro))?.name;
+        const macroName = (game.macros.getName(alert.macro) || fromUuidSync(alert.macro))?.name;
 
         return {
             id: alert.id,
@@ -162,7 +162,7 @@ export default class CombatAlertsApplication extends Application {
         // Listen for alert edit buttons to be clicked.
         html.find(".edit-alert-button").click((event) => {
             const alertId = event.currentTarget.dataset.id;
-            const alertData = getProperty(this._combat, `flags.${CONST.moduleName}.alerts.${alertId}`);
+            const alertData = foundry.utils.getProperty(this._combat, `flags.${CONST.moduleName}.alerts.${alertId}`);
             if (!alertData) {
                 throw new Error(
                     `Trying to edit a non-existent turn alert! ID "${alertId}" does not exist on combat "${this.combatId}"`

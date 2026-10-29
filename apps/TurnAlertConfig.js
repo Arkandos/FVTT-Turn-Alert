@@ -121,8 +121,8 @@ export default class TurnAlertConfig extends FormApplication {
     /** @override */
     _onChangeInput(event) {
         let fd = null;
-        if (isNewerVersion(game.data.version, "0.7.0")) {
-            fd = new FormDataExtended(event.currentTarget.form);
+        if (foundry.utils.isNewerVersion(game.version, "0.7.0")) {
+            fd = new foundry.applications.ux.FormDataExtended(event.currentTarget.form);
         } else {
             fd = this._getFormData(event.currentTarget.form);
         }
@@ -235,7 +235,7 @@ export default class TurnAlertConfig extends FormApplication {
     }
 
     _validMacro(macroString) {
-        return Boolean(!macroString || game.macros.get(macroString) || game.macros.getName(macroString));
+        return Boolean(!macroString || game.macros.getName(macroString) || fromUuidSync(macroString));
     }
 
     /** @override */
