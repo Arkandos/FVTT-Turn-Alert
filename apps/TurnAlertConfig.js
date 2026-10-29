@@ -235,7 +235,7 @@ export default class TurnAlertConfig extends FormApplication {
     }
 
     _validMacro(macroString) {
-        return Boolean(!macroString || game.macros.get(macroString) || game.macros.getName(macroString));
+        return Boolean(!macroString || game.macros.getName(macroString) || fromUuidSync(macroString));
     }
 
     /** @override */

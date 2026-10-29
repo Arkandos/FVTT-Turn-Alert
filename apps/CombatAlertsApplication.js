@@ -95,7 +95,7 @@ export default class CombatAlertsApplication extends Application {
             : `${CONST.moduleName}.APP.TriggerAtStartOfTurnNum`;
         const roundIcon = alert.endOfTurn ? "hourglass-end" : "hourglass-start";
 
-        const macroName = (game.macros.get(alert.macro) || game.macros.getName(alert.macro))?.name;
+        const macroName = (game.macros.getName(alert.macro) || fromUuidSync(alert.macro))?.name;
 
         return {
             id: alert.id,
